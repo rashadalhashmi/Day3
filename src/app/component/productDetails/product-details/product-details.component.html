@@ -1,0 +1,21 @@
+
+
+<div class="row">
+  <div class="card col-8 mx-auto mt-5 ">
+    <h1 class="card-header">Prouduct Details</h1>
+    <div class="card-body">
+      <h3 class="card-title">{{item.Name}}</h3>
+      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Repellat ducimus ipsum doloremque officia architecto, ad, illum dolores dolorum
+        facere eaque eos, exercitationem voluptates commodi. Molestiae rem ad odit eos aliquid..</p>
+       <h3>price : {{item.Price}}</h3>
+      <!-- <button mat-stroked-button color="primary" (click)="addToCart()">Add to Cart</button> -->
+
+      <button mat-stroked-button  color="primary"  (click)="addToCart()">
+        <p style="width: 80px;" [matBadgeHidden]="getItemsInCard(item.id)==0" [matBadge]="getItemsInCard(item.id)" matBadgeColor="accent" matBadgeSize="medium"  >add to Cart</p>
+      </button>
+
+    </div>
+  </div>
+</div>
+

@@ -10,6 +10,7 @@ import { ProductFilterComponent } from './component/product-filter/product-filte
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './AngularMaterial/angular-material/angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductDetailsComponent } from './component/productDetails/product-details/product-details.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductComponent,
     CartComponent,
     ProductFilterComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

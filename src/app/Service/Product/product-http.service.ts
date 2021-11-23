@@ -22,8 +22,12 @@ export class ProductHttpService {
     return this.httpClient.get<IProduct[]>(`${environment.APIURL}/products?CateogryID=${catId}`)
   }
   getAllCategory():Observable<ICategory[]>{
-    return this.httpClient.get<IProduct[]>(`${environment.APIURL}/Categorys`)
+    return this.httpClient.get<ICategory[]>(`${environment.APIURL}/Categorys`)
 
+  }
+
+  getProductById(id:string):Observable<IProduct>{
+    return this.httpClient.get<IProduct>(`${environment.APIURL}/products/${id}`)
   }
 
 

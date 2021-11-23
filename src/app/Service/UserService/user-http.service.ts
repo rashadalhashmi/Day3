@@ -13,9 +13,9 @@ export class UserHttpService {
 
   createUser(user:User){
     headers:new HttpHeaders({
-      'content-type': 'application/JSON'
+      'content-type': 'application/JSON',
     })
 
-    return this.httpClient.post(`${environment.APIURL}/Users`,JSON.stringify(user));
+    return this.httpClient.post(`${environment.APIURL}/Users`,user);
   }
 }

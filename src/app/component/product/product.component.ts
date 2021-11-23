@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit{
 
     let CardItem: IshoppingCartItem =
     {
-      ProductID: item.ID,
+      ProductID: item.id,
       ProductName: item.Name,
       Unitprice: item.Price,
       Selectedquantity: 1,

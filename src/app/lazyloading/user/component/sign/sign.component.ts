@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import {FormBuilder, Validators,Validator,ValidatorFn, AbstractControl } from '@angular/forms';
 import { UserHttpService } from 'src/app/Service/UserService/user-http.service';
+import { Router } from '@angular/router';
 
 
 function passwordMatch(c:AbstractControl):{[key:string]:boolean}|null{
@@ -30,10 +31,10 @@ export class SignComponent implements OnInit {
 
   userForm:any;
   user=new User();
-  constructor(private formBuilder:FormBuilder,private userHttp:UserHttpService) {
-
-
-   }
+  constructor(
+         private formBuilder:FormBuilder,
+         private userHttp:UserHttpService,
+         private route :Router) {}
 
   ngOnInit(): void {
 
@@ -53,9 +54,18 @@ export class SignComponent implements OnInit {
 
   save(): void {
 
+    this.user.id=Math.floor(Math.random()*1000)+"";
+    this.user.firstName=this.userForm.get('firstName').value
+    this.user.lastName=this.userForm.get('lastName').value;
+    this.user.password=this.userForm.get('passwordGroup.password').value;
+    this.user.username=this.userForm.get('email').value;
+    this.user.Token="slfjk-sdfkjdkl55f-d45df4-dfllk"
 
-    console.log(this.userForm.value);
- // console.log('Saved: ' + JSON.stringify(this.userForm));
+    this.userHttp.createUser(this.user).subscribe(res=>{
+      this.route.navigate(['user/login'])
+        console.log(res);
+
+    });
   }
 
 }

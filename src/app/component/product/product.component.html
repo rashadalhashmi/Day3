@@ -15,12 +15,14 @@
                 <ng-container  *ngFor ="let item of ProductList; let i=index ">
                   <tr  [ngClass]="{'my_class': item.Quantity==1}" >
                       <th  scope="row pt-3">{{i+1}}</th>
-                      <td class="pt-3">{{item.Name}}</td>
+                      <td  class="pt-3">
+                       <a [routerLink]="['/productdetails',item.id]" mat-flat-button >{{item.Name}}</a>
+                      </td>
                       <td class="pt-3">{{item.Quantity!==0?item.Quantity:"Out Of Stock"}}</td>
                       <td class="pt-3">{{item.Price}}</td>
                       <td>
                         <button mat-button  color="primary"  (click)="addToCart(item)">
-                          <p style="width: 80px;" [matBadgeHidden]="getItemsInCard(item.ID)==0" [matBadge]="getItemsInCard(item.ID)" matBadgeColor="accent" matBadgeSize="medium"  >add to Cart</p>
+                          <p style="width: 80px;" [matBadgeHidden]="getItemsInCard(item.id)==0" [matBadge]="getItemsInCard(item.id)" matBadgeColor="accent" matBadgeSize="medium"  >add to Cart</p>
                         </button>
                       </td>
 

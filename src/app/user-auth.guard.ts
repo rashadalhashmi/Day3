@@ -13,9 +13,7 @@ export class UserAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
      let isloign:boolean=false;
-     this.userService.loginStatus().subscribe(stat=> isloign==stat)   ;
-
-     return isloign ;
+     return this.userService.loginStatus();
   }
 
 }
