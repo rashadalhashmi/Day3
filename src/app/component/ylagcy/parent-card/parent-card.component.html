@@ -1,0 +1,36 @@
+<div class="product container my-5">  
+        <h1 class="text-center bg-danger my-5">Product List</h1>    
+    <select name="" id="" [(ngModel)]="categoryID" >
+      <option [value]="0">AllProducts</option>
+      <option *ngFor='let item of CategoryList' [value]="item.ID">{{item.Name}} </option>
+
+    </select>
+
+    <app-child-card [CatagoryID]="categoryID" (shoppingCartItems)="shoppingCartItemsChanges($event)"></app-child-card>
+
+    <h1 class="text-center bg-danger my-5">Cart</h1>    
+   
+    
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"> product Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col"> total price</th>
+        </tr>
+      </thead>
+      <tbody>
+
+          <ng-container  *ngFor ="let item of shoppingCartItems; let i=index ">
+            <tr >
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.ProductName}}</td>
+                <td>{{item.Selectedquantity}}</td>
+                <td>{{item.Unitprice * item.Selectedquantity}}</td>
+              </tr>
+          </ng-container>
+
+       <!-- test Branches from vs code -->
+      </tbody>
+    </table>

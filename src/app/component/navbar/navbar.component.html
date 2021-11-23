@@ -1,24 +1,49 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"> <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="product" routerLinkActive="active">Product</a>
+        </li>
+        <ng-container *ngIf="!isLogin; else lgout" class="nav-item">
+          <li >
+            <a class="nav-link" routerLink="/user/login" routerLinkActive="active">login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+          <li >
+            <a class="nav-link" routerLink="/user/sign" routerLinkActive="active">sign Up</a>
           </li>
+        </ng-container>
+
+        <ng-template #lgout>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <button class="nav-link" routerLinkActive="active" (click)="logout()">logout</button>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
-      </div>
+        </ng-template>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active">{{Username}}</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto me-5">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="cart" routerLinkActive="active">
+            <p style="width: 40px;" [matBadge]="cardItemsQuantaty" matBadgeColor="primary" matBadgeSize="medium">Cart
+            </p>
+          </a>
+        </li>
+
+      </ul>
+
     </div>
-  </nav>
+  </div>
+</nav>

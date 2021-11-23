@@ -1,9 +1,0 @@
-<div class="product container my-5">  
-            
-    <select name="" id="" [(ngModel)]="categoryID" >
-      <option [value]="0">AllProduct</option>
-      <option *ngFor='let item of CategoryList' [value]="item.ID">{{item.Name}} </option>
-
-    </select>
-
-    <app-child-card [CatagoryID]="categoryID"></app-child-card>

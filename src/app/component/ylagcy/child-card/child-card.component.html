@@ -1,35 +1,37 @@
 
+
         <table *ngIf="!IsPurshased" class="table ">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Quantity</th>
+                <th scope="col">product Name</th>
+                <th scope="col">avaliable Quantity</th>
                 <th scope="col">price</th>
               </tr>
             </thead>
             <tbody>
+
                 <ng-container  *ngFor ="let item of SelectedProduct; let i=index ">
-                 
-               
-                  <tr  [ngClass]="{'my_class': item.Quantity==1}"  *ngIf= "item.Quantity!==0">
+                  <tr  [ngClass]="{'my_class': item.Quantity==1}" >
                       <th scope="row">{{i+1}}</th>
                       <td>{{item.Name}}</td>
-                      <td>{{item.Quantity}}</td>
+                      <td>{{item.Quantity!==0?item.Quantity:"Out Of Stock"}}</td>  
                       <td>{{item.Price}}</td>
                       <td>
-                         <input #value style="margin-right: 5px;"  type="number" />
+                         <input minlength="0"  #QuantityInput style="margin-right: 5px;"  type="number" />
                             <div class="btn-group mr-2" role="group" aria-label="First group">
-                              <button type="button" class="btn btn-primary" (click)="Increase(value,item)">+</button>
-                              <button type="button" class="btn btn-secondary">-</button>
-                            </div>
-                           
+                              <button type="button" class="btn btn-primary" (click)="addToCart(QuantityInput.value,item)">+</button>
+                              <button type="button" class="btn btn-secondary" (click)="removeFromCart(QuantityInput.value,item)">-</button>
+                            </div>   
                       </td>
                     </tr>
-  
+                   
+               
+             
                 </ng-container>
   
              <!-- test Branches from vs code -->
             </tbody>
           </table>
-  
+       
+         

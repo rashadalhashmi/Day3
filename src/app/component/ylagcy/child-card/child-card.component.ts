@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { IProduct } from 'src/app/ViewModel/iproduct';
 import { IshoppingCartItems } from 'src/app/ViewModel/ishopping-cart-items';
+import { CartState } from 'src/app/ViewModel/shoping-state';
 
 @Component({
   selector: 'app-child-card',
@@ -29,7 +30,7 @@ export class ChildCardComponent implements OnInit,OnChanges {
 
      {
       ID : 2 ,
-      Name :"Iphone 7" ,
+      Name :"Iphone 11" ,
     	Quantity : 1,
     	Price : 100 ,
     	Img : "asset/1.jpg" ,
@@ -39,7 +40,7 @@ export class ChildCardComponent implements OnInit,OnChanges {
      {
       ID : 3 ,
       Name :"Iphone 13 pro max" ,
-    	Quantity : 0,
+    	Quantity : 30,
     	Price : 100 ,
     	Img : "asset/1.jpg" ,
       CateogryID : 1 ,      
@@ -109,8 +110,7 @@ export class ChildCardComponent implements OnInit,OnChanges {
     this.SelectedProduct=Array.from(this.ProductList);
   }
 
-
-  Increase(vlaue:any,item:IProduct)
+  addToCart(ProductQuantity:string,item:IProduct)
   {
 
     let shopCardItem :IshoppingCartItems= 
@@ -118,19 +118,49 @@ export class ChildCardComponent implements OnInit,OnChanges {
       ProductID:item.ID ,
       ProductName:item.Name,
       Unitprice:item.Price,
-      Selectedquantity:vlaue  
+      Selectedquantity: +ProductQuantity,
+      CartState:CartState.addToCart
+
     }
         
      this.shoppingCartItems.emit(shopCardItem);
+
+     this.decreadeQuantity(item.ID,shopCardItem.Selectedquantity);
   }
 
-  decreadeQuantity(item:IProduct){
+  removeFromCart(ProductQuantity:string,item:IProduct)
+  {
+    let shopCardItem :IshoppingCartItems= 
+    {
+      ProductID:item.ID ,
+      ProductName:item.Name,
+      Unitprice:item.Price,
+      Selectedquantity: +ProductQuantity,
+      CartState:CartState.removeFromCart
+    }
+        
+     this.shoppingCartItems.emit(shopCardItem);
+     this.increaseQuantity(item.ID,shopCardItem.Selectedquantity);
+  }
+
+  decreadeQuantity(Id:number,quantity:number){
 
   
     this.SelectedProduct.map(Item=>{
-      if(Item.ID==item.ID)
-       Item.Quantity--;
+      if(Item.ID==Id)
+      Item.Quantity= Item.Quantity-quantity;
     })
+    console.log(this.SelectedProduct)
+    
+  }
+  increaseQuantity(Id:number,quantity:number){
+
+  
+    this.SelectedProduct.map(Item=>{
+      if(Item.ID==Id)
+      Item.Quantity= Item.Quantity+quantity;
+    })
+    console.log(this.SelectedProduct)
     
   }
 }

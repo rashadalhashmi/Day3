@@ -1,0 +1,4 @@
+<select name="" id=""  (change)="changeCategory($event)">
+    <option [value]="0">AllProducts</option>
+    <option *ngFor='let item of CategoryList' [value]="item.ID">{{item.Name}} </option>
+  </select>

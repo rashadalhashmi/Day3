@@ -1,0 +1,51 @@
+  <div  class="row mt-5 p-5 " >
+
+    <form   #Frm='ngForm' (ngSubmit)="login(Frm.value)" class="row g-3 needs-validation  col-6 mx-auto border p-5 "
+     novalida matRipple matRippleColor="#651fff2e" [matRippleCentered]="true" [matRippleTrigger]="trigger">
+
+     <div class=" col-12 " >
+        <label for="validationCustom01" class="form-label">Username</label>
+        <input ngModel
+               type="email"
+               class="form-control"
+               #username='ngModel'
+               id="Username"
+               name="username"
+               required
+               minlength="8"
+               maxlength="25"
+               pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+               [class.is-invalid]='username.invalid&&username.touched'
+               [class.is-valid]='username.valid&&username.touched'
+               >
+               <mat-hint   [class.hidden]="username.valid||username.untouched">*invaild Email </mat-hint>
+      </div>
+      <div class="col-12">
+              <label for="validationCustom02" class="form-label">Password</label>
+              <input ngModel
+              type="password"
+              class="form-control"
+              id="password"
+              #password='ngModel'
+              name="password"
+              required
+              minlength="8"
+              maxlength="15"
+              [class.is-invalid]='password.invalid&&password.touched'
+              [class.is-valid]='password.valid&&password.touched'
+              >
+              <mat-hint  [class.hidden]="password.valid||password.untouched">*please Enter password at least 8 charcter</mat-hint>
+                  <!-- <br> -->
+              <!-- <mat-hint [class.hidden]="!usernotfound"  >*password or username not correct</mat-hint> -->
+
+      </div>
+      <div #trigger class="col-1 mx-auto">
+        <button type="submit" mat-stroked-button color="primary" [disabled]="Frm.invalid">Login</button>
+      </div>
+
+    </form>
+
+    <hr>
+  </div>
+
+

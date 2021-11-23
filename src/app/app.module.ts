@@ -1,24 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ParentCardComponent } from './component/parent-card/parent-card.component';
-import { ChildCardComponent } from './component/child-card/child-card.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ProductComponent } from './component/product/product.component';
+import { CartComponent } from './component/cart/cart.component';
+import { ProductFilterComponent } from './component/product-filter/product-filter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './AngularMaterial/angular-material/angular-material.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ParentCardComponent,
-    ChildCardComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductComponent,
+    CartComponent,
+    ProductFilterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,9 @@
-export interface IshoppingCartItems {
+import { CartState } from "./shoping-state";
 
-
-    ProductID:number, ProductName:string, Unitprice:number, Selectedquantity:number
+export interface IshoppingCartItem {
+    ProductID:number;
+     ProductName:string;
+     Unitprice:number;
+     Selectedquantity:number;
+     CartState:CartState;
 }

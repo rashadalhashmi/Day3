@@ -1,0 +1,37 @@
+<h1 class="text-center bg-danger my-5">Product List</h1>
+  <app-product-filter></app-product-filter>
+
+        <table *ngIf="!IsPurshased" class="table mb-5 ">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">product Name</th>
+                <th scope="col">avaliable Quantity</th>
+                <th scope="col">price</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                <ng-container  *ngFor ="let item of ProductList; let i=index ">
+                  <tr  [ngClass]="{'my_class': item.Quantity==1}" >
+                      <th  scope="row pt-3">{{i+1}}</th>
+                      <td class="pt-3">{{item.Name}}</td>
+                      <td class="pt-3">{{item.Quantity!==0?item.Quantity:"Out Of Stock"}}</td>
+                      <td class="pt-3">{{item.Price}}</td>
+                      <td>
+                        <button mat-button  color="primary"  (click)="addToCart(item)">
+                          <p style="width: 80px;" [matBadgeHidden]="getItemsInCard(item.ID)==0" [matBadge]="getItemsInCard(item.ID)" matBadgeColor="accent" matBadgeSize="medium"  >add to Cart</p>
+                        </button>
+                      </td>
+
+                    </tr>
+
+
+
+                </ng-container>
+
+            </tbody>
+          </table>
+
+<div></div>
+

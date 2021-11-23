@@ -1,0 +1,36 @@
+<div class="product container my-5">
+
+
+
+<!-- <app-product [CatagoryID]="categoryID" (shoppingCartItems)="shoppingCartItemsChanges($event)"></app-product> -->
+
+<h1 class="text-center bg-danger my-5">Cart</h1>
+
+
+<table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"> product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"> total price</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <ng-container  *ngFor ="let item of cartItems; let i=index ">
+        <tr >
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.ProductName}}</td>
+            <td>{{item.Selectedquantity}}</td>
+            <td>{{item.Unitprice * item.Selectedquantity}}</td>
+            <td>
+              <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="removeFromCart(item.ProductID)">
+              <mat-icon>delete</mat-icon>
+            </button></td>
+          </tr>
+      </ng-container>
+
+   <!-- test Branches from vs code -->
+  </tbody>
+</table>
