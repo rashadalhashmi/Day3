@@ -42,7 +42,10 @@ export class ProductComponent implements OnInit{
       CartState: CartState.addToCart
 
     }
+
+    // item.Quantity--;
     this.cartService.addToshppingCart(CardItem);
+
 
   }
 
